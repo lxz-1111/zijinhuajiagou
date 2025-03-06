@@ -1,0 +1,11 @@
+# /workspace/k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  containers:
+  - name: app
+    resources:
+      limits:
+        memory: "512Mi"  # 适配云端内存限制
+      requests:
+        cpu: "0.5"

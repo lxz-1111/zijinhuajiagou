@@ -1,0 +1,12 @@
+# .marscode/pipeline.yml
+stages:
+  - name: 代码扫描
+    image: python:3.9
+    commands:
+      - pip install safety
+      - safety check --full-report
+      
+  - name: 自动部署
+    trigger: branch:main
+    commands:
+      - kubectl apply -f /workspace/k8s
